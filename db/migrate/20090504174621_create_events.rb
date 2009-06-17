@@ -32,6 +32,13 @@ class CreateEvents < ActiveRecord::Migration
       :connect_to_container => "main",
       :publish_on_save => true)
       
+    EventsPortlet.create!(
+      :name => "Events Portlet",
+      :template => EventsPortlet.default_template,
+      :connect_to_page_id => event_page.id,
+      :connect_to_container => "main",
+      :publish_on_save => true)
+
     route = event_page.page_routes.build(
       :name => "Event",
       :pattern => "/events/:year/:month/:day/:slug",
